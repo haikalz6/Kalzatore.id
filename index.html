@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalzstore.id - Official Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #000814; color: white; margin: 0; padding: 20px 10px;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .container { 
+            max-width: 450px; width: 100%; background: rgba(0, 242, 255, 0.03); 
+            padding: 25px; border-radius: 15px; border: 1px solid #00f2ff;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+        h1 { text-align: center; color: #00f2ff; text-transform: uppercase; margin-bottom: 30px; text-shadow: 0 0 10px #00f2ff; letter-spacing: 2px; }
+        
+        .label { font-size: 13px; color: #00f2ff; font-weight: 600; margin-bottom: 8px; display: block; text-transform: uppercase; }
+        
+        input, select { 
+            width: 100%; padding: 15px; border-radius: 10px; border: 1px solid rgba(0, 242, 255, 0.4); 
+            background: rgba(255, 255, 255, 0.05); color: white; outline: none; margin-bottom: 25px; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        option { background: #000814; color: white; }
+
+        .section-title { font-size: 14px; font-weight: 700; color: #fff; margin: 25px 0 12px 0; border-left: 4px solid #00f2ff; padding-left: 10px; text-transform: uppercase; }
+
+        .grid-items { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .item { 
+            background: rgba(255, 255, 255, 0.05); padding: 15px 10px; border-radius: 12px; 
+            text-align: center; cursor: pointer; border: 1px solid rgba(0, 242, 255, 0.2); transition: 0.2s;
+        }
+        .item:hover { border-color: #00f2ff; background: rgba(0, 242, 255, 0.1); transform: translateY(-3px); }
+        .item.active { background: #00f2ff; color: #000; font-weight: 700; box-shadow: 0 0 15px #00f2ff; border: none; }
+        
+        .item strong { display: block; font-size: 15px; margin-bottom: 4px; }
+        .item span { font-size: 12px; opacity: 0.9; }
+
+        button { 
+            width: 100%; padding: 18px; background: #00f2ff; border: none; color: #000; 
+            font-weight: 700; font-size: 16px; border-radius: 12px; cursor: pointer; 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); text-transform: uppercase; margin-top: 15px;
+        }
+        button:hover { background: #fff; }
+        
+        .footer { text-align: center; margin-top: 30px; font-size: 11px; opacity: 0.5; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>KALZSTORE.ID</h1>
+
+    <span class="label">1. MASUKKAN PLAYER ID (FF)</span>
+    <input type="number" id="playerID" placeholder="Masukkan ID FF Anda">
+
+    <div class="section-title">2. PILIH DIAMOND</div>
+    <div class="grid-items">
+        <div class="item" onclick="selectItem(this, '50 DM', 'RM 2.50')"><strong>50 💎</strong><span>RM 2.50</span></div>
+        <div class="item" onclick="selectItem(this, '100 DM', 'RM 5.00')"><strong>100 💎</strong><span>RM 5.00</span></div>
+        <div class="item" onclick="selectItem(this, '225 DM', 'RM 10.00')"><strong>225 💎</strong><span>RM 10.00</span></div>
+        <div class="item" onclick="selectItem(this, '310 DM', 'RM 13.00')"><strong>310 💎</strong><span>RM 13.00</span></div>
+        <div class="item" onclick="selectItem(this, '450 DM', 'RM 17.49')"><strong>450 💎</strong><span>RM 17.49</span></div>
+        <div class="item" onclick="selectItem(this, '525 DM', 'RM 21.00')"><strong>525 💎</strong><span>RM 21.00</span></div>
+        <div class="item" onclick="selectItem(this, '750 DM', 'RM 28.00')"><strong>750 💎</strong><span>RM 28.00</span></div>
+        <div class="item" onclick="selectItem(this, '1060 DM', 'RM 39.00')"><strong>1060 💎</strong><span>RM 39.00</span></div>
+    </div>
+
+    <div class="section-title">3. PILIH MEMBERSHIP</div>
+    <div class="grid-items">
+        <div class="item" onclick="selectItem(this, 'Harian', 'RM 3.00')"><strong>Harian</strong><span>RM 3.00</span></div>
+        <div class="item" onclick="selectItem(this, 'Mingguan', 'RM 8.49')"><strong>Mingguan</strong><span>RM 8.49</span></div>
+        <div class="item" onclick="selectItem(this, 'Bulanan', 'RM 40.00')"><strong>Bulanan</strong><span>RM 40.00</span></div>
+    </div>
+
+    <div class="section-title">4. KAEDAH PEMBAYARAN</div>
+    <select id="paymentMethod">
+        <option value="">-- Pilih Pembayaran --</option>
+        <option value="Digi">Digi</option>
+        <option value="Celcom">Celcom</option>
+        <option value="DuitNow">DuitNow</option>
+        <option value="Touch 'n Go">Touch 'n Go</option>
+    </select>
+
+    <button onclick="kirimOrder()">BELI SEKARANG</button>
+    <div class="footer">PROSES PANTAS & MANUAL<br>© 2024 KALZSTORE.ID</div>
+</div>
+
+<script>
+    let selectedProduct = "";
+
+    function selectItem(el, name, price) {
+        document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+        el.classList.add('active');
+        selectedProduct = name + " (" + price + ")";
+    }
+
+    function kirimOrder() {
+        let id = document.getElementById('playerID').value;
+        let payment = document.getElementById('paymentMethod').value;
+        let nomorWA = "601116218073";
+
+        if (!id) return alert("Sila masukkan Player ID FF!");
+        if (!selectedProduct) return alert("Sila pilih Diamond atau Membership!");
+        if (!payment) return alert("Sila pilih kaedah pembayaran!");
+
+        let pesan = `Halo Kalzstore.id, saya ingin order:%0A%0A` +
+                    `Produk: *${selectedProduct}*%0A` +
+                    `Player ID: *${id}*%0A` +
+                    `Pembayaran: *${payment}*%0A%0A` +
+                    `Sila berikan maklumat untuk saya buat bayaran.`;
+        
+        window.open(`https://wa.me/${nomorWA}?text=${pesan}`);
+    }
+</script>
+
+</body>
+</html>
